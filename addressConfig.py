@@ -1,7 +1,17 @@
 #!/usr/bin/python3
 #-*- coding:utf-8-*-
 def convert (octal):
-        """ Verifie si l'argument estun number"""
+    """[checking if the argument of this functioon is a number ]
+
+    Arguments:
+        octal {number} -- [it's sould be a number or a string]
+
+    Raises:
+        TypeError: [raise typeError if the argument is not anumber]
+
+    Returns:
+        [number] -- [int type]
+    """
         if isinstance(octal, str):
             octalint = int(octal)
             return octalint
@@ -11,7 +21,14 @@ def convert (octal):
             raise TypeError
 
 def verify(octal):
-    """ Methode satic pour verifier l'adress"""
+    """[this methode it'll be used in the class address for checking if their values are in [0, 255]]
+
+    Arguments:
+        octal {[int]} -- [sould be in [0, 255]]
+
+    Returns:
+        [int] -- [value in [0, 255]]
+    """
     try:
         value = convert(octal)
         if value >= 0 & value <= 255:
@@ -20,12 +37,26 @@ def verify(octal):
         print(e)
 
 def checking_address(address):
-        """Methode pour valider l'adresse"""
+    """[Check if the address is a good address]
+
+    Arguments:
+        address {[list]} -- [the list contain the differents part of a ip prrotocol address version 4]
+
+    Returns:
+        [list]] -- [after checking the list in argument it's create a new list wish contain the good value we need]
+    """
         address_check = [ x for x in map(verify, address)]
         return address_check
 
 def give_mask(address):
-        """Methode pour donner un mask a l'adresse"""
+    """[allow to give a mask of the Address]
+
+    Arguments:
+        address {[lists]} -- [he list contain the differents part of a ip prrotocol address version 4]
+
+    Returns:
+        [list] -- [After verifying the class of the address it's create create a list with contain the values of his mask ]
+    """
         try:
             fist_element = convert(address[0])
         except TypeError as err:
